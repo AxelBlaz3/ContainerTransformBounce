@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sample"
+            type="com.example.containertransformbounce.model.Sample" />
+
+        <variable
+            name="listener"
+            type="com.example.containertransformbounce.ui.home.HomeAdapter.HomeAdapterListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/grid_1"
+        android:layout_marginVertical="@dimen/grid_0_5"
+        android:onClick="@{(view) -> listener.onSampleItemClick(view, sample)}"
+        android:transitionName="@{@string/transition_element(sample.id)}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/grid_2">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{sample.title}"
+                android:textAppearance="?textAppearanceHeadline6"
+                tools:layout_editor_absoluteX="16dp"
+                tools:text="This is a sample title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_1"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{sample.description}"
+                android:textAppearance="?textAppearanceBody2"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:layout_editor_absoluteX="16dp"
+                tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
